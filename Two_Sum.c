@@ -10,11 +10,16 @@ Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 */
-#include<stdio.h>
-int i,j,n;
-void twoSum(int* a, int target)
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* twoSum(int* nums, int numsSize, int target)
 {
+  int i,j;
+  int n=numsSize;
+  int *a=nums;
   printf("In function\n");
+  int *b = (int )malloc(sizeof(int));
   for(i=0;i<n-1;i++)
   {
     printf("In i-loop\n");
@@ -24,23 +29,14 @@ void twoSum(int* a, int target)
       if(a[i]+a[j]==target)
         {
           printf("In if stmt\n");
-          int b[]={i,j};
-          printf("%d, %d\n",b[1],b[2]);
-          //return b;
+          //int b[]={i,j};
+          b[0]=i;
+          b[1]=j;
+          //printf("%d, %d\n",b[0],b[1]);
+          return b;
         }
       else printf("Not yet\n");
     }
   }
-}
-void main()
-{
-  int target=9;
-  /*printf("Enter target sum\n");
-  scanf("%d\n",&target);
-  printf("Enter array\n");
-  scanf("%d\n",a);*/
-  int arr[]={1,2,3,4,5};
-  int n=sizeof(arr)/sizeof(int);
-  printf("len is %d\n",n);
-  twoSum(arr,target);
+    return 0;
 }
